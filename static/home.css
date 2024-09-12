@@ -6,28 +6,32 @@ body {
     text-align: center;
 }
 
-nav {
+.nav-block {
     background-color: #1f1f1f;
 }
 
-nav a {
+.nav-block a {
     text-decoration: none;
 }
 
 #footer a {
-    color: #fff;
+    color: #f3f3f3;
 }
 
 #footer a:hover {
     color: #fec008;
 }
 
+.hx {
+    color: #f3f3f3;
+}
+
 .btn {
     margin: 5px;
 }
 
-.hx {
-    color: #f3f3f3;
+.text-extra-small {
+    font-size: 0.75rem;
 }
 
 h1 {
@@ -108,7 +112,7 @@ svg {
 @media (max-width: 768px) {
 
     /* 768px is the breakpoint for small devices in Bootstrap */
-    nav .container,
+    .nav-block .container,
     .main-body {
         max-width: 95%;
     }
@@ -117,7 +121,7 @@ svg {
 @media (min-width: 768px) {
 
     /* 768px is the breakpoint for small devices in Bootstrap */
-    nav .container,
+    .nav-block .container,
     .main-body {
         max-width: 90%;
     }
@@ -126,7 +130,7 @@ svg {
 @media (min-width: 992px) {
 
     /* 992px is the breakpoint for medium devices in Bootstrap */
-    nav .container,
+    .nav-block .container,
     .main-body {
         max-width: 80%;
     }
@@ -135,7 +139,7 @@ svg {
 @media (min-width: 1200px) {
 
     /* 1200px is the breakpoint for large devices in Bootstrap */
-    nav .container,
+    .nav-block .container,
     .main-body {
         max-width: 60%;
     }

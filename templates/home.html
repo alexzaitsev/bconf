@@ -47,17 +47,18 @@
 <body>
     <div class="min-vh-100 d-flex flex-column justify-content-between">
         <div>
-            <nav class="nav">
+            <div class="nav-block">
                 <div class="container d-flex justify-content-end align-items-center">
                     <div id="link-subscribe" class="d-flex align-items-center"
                         onclick="window.location.href='#subscription-form';" style="cursor: pointer;">
                         <span class="fw-bold m-2 mw500-width-25 hx">Get monthly updates</span>
                         <iframe src="https://embeds.beehiiv.com/a6b44755-b9cd-4f60-a5bd-4517e1028864?slim=true"
-                            class="mt-2 mb-2 ms-2 mw500-width-75" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no"
+                            class="mt-2 mb-2 ms-2 mw500-width-75" data-test-id="beehiiv-embed" height="52"
+                            frameborder="0" scrolling="no"
                             style="margin: 0; border-radius: 0px !important; background-color: transparent; pointer-events: none;"></iframe>
                     </div>
                 </div>
-            </nav>
+            </div>
 
             <div class="main-body mx-auto">
                 <h1 id="main-title"></h1>
@@ -99,19 +100,17 @@
             </div>
         </div>
 
-        <nav id="footer" class="nav mt-4">
+        <div id="footer" class="nav-block mt-4">
             <div class="container d-flex justify-content-center align-items-center">
-                <li class="nav-item m-3 d-none">
-                    <a href="https://bconf.beehiiv.com" target="_blank">Our newsletter archive</a>
-                </li>
-                <li class="nav-item m-3 fw-bold">
-                    <a id="link-sponsor" href="mailto:contact@bconf.org" target="_blank">Become a sponsor</a>
-                </li>
-                <li class="nav-item m-3">
-                    <a id="link-contact" href="mailto:contact@bconf.org" target="_blank">Contact us</a>
-                </li>
+                <a class="m-3 d-none" href="https://bconf.beehiiv.com" target="_blank">Our newsletter archive</a>
+                <a id="link-sponsor" class="m-3 fw-bold" href="mailto:contact@bconf.org" target="_blank">Become a
+                    sponsor</a>
+                <a id="link-contact" class="m-3" href="mailto:contact@bconf.org" target="_blank">Contact us</a>
             </div>
-        </nav>
+            <div class="d-flex justify-content-center align-items-center">
+                <a id="link-github" class="ms-3 me-3 mb-3 text-extra-small" href="https://github.com/alexzaitsev/bconf" target="_blank">FOSS <i class="fa-brands fa-github"></i></a>
+            </div>
+        </div>
     </div>
 
     <script>
