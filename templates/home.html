@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Conferences - Find Bitcoin Events Worldwide | bconf.org</title>
+    <meta name="description"
+        content="Discover all Bitcoin conferences happening worldwide in one place. Find, share, and attend Bitcoin events with bconf.org. Subscribe for updates!">
+    <meta property="og:title" content="Bitcoin Conferences Worldwide | bconf.org">
+    <meta property="og:description" content="Find all Bitcoin conferences happening around the globe in one place.">
+    <meta property="og:image" content="https://bconf.org/static/social/bconf-social-fb.jpg">
+    <meta property="og:url" content="https://bconf.org">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bitcoin Conferences Worldwide">
+    <meta name="twitter:description" content="Discover all Bitcoin events in one place.">
+    <meta name="twitter:image" content="https://bconf.org/static/social/bconf-social-tw.jpeg">
+
+    {{ template "google_analytics" . }}
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+    <script src="https://kit.fontawesome.com/488a1149ce.js" crossorigin="anonymous"></script>
+    <!-- jquery -->
+    <script src="/static/jquery-3.7.1.min.js"></script>
+    <!-- bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+    <!-- home -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/topojson.v2.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v1.min.js"></script>
+    <link rel="stylesheet" href="/static/home.css">
+</head>
+
+<body>
+    <div class="min-vh-100 d-flex flex-column justify-content-between">
+        <div>
+            <nav class="nav">
+                <div class="container d-flex justify-content-end align-items-center">
+                    <div id="link-subscribe" class="d-flex align-items-center"
+                        onclick="window.location.href='#subscription-form';" style="cursor: pointer;">
+                        <span class="fw-bold m-2 mw500-width-25 hx">Get monthly updates</span>
+                        <iframe src="https://embeds.beehiiv.com/a6b44755-b9cd-4f60-a5bd-4517e1028864?slim=true"
+                            class="mt-2 mb-2 ms-2 mw500-width-75" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no"
+                            style="margin: 0; border-radius: 0px !important; background-color: transparent; pointer-events: none;"></iframe>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="main-body mx-auto">
+                <h1 id="main-title"></h1>
+
+                <div id="map-container">
+                    <svg id="world-map" viewBox="0 0 800 450" preserveAspectRatio="xMidYMid meet"></svg>
+                </div>
+
+                <div class="promo-block d-flex flex-column justify-content-center align-items-center">
+                    <h2>Showcase Your Bitcoin Conference Globally</h2>
+                    <a id="link-submit" class="btn btn-warning" href="/submit" target="_blank">List Your Conference</a>
+                </div>
+
+                <div id="conf-table" class="table-responsive card mx-auto mt-4">
+                    <table class="table table-striped table-bordered">
+                        <thead id="conf-table-head"></thead>
+                        <tbody id="conf-table-body"></tbody>
+                    </table>
+                </div>
+
+                <div id="subscription-form" class="w-100 mt-4 p-0">
+                    <iframe src="https://embeds.beehiiv.com/a6b44755-b9cd-4f60-a5bd-4517e1028864"
+                        data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no"
+                        style="border-radius: 4px; border: 2px solid #e5e7eb; margin: 0; background-color: transparent;"></iframe>
+                </div>
+            </div>
+
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+                <div id="toast-sub-res" class="toast hide align-items-center text-white border-0" role="alert"
+                    aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            {{ .toast.message }}
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                            aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav id="footer" class="nav mt-4">
+            <div class="container d-flex justify-content-center align-items-center">
+                <li class="nav-item m-3 d-none">
+                    <a href="https://bconf.beehiiv.com" target="_blank">Our newsletter archive</a>
+                </li>
+                <li class="nav-item m-3 fw-bold">
+                    <a id="link-sponsor" href="mailto:contact@bconf.org" target="_blank">Become a sponsor</a>
+                </li>
+                <li class="nav-item m-3">
+                    <a id="link-contact" href="mailto:contact@bconf.org" target="_blank">Contact us</a>
+                </li>
+            </div>
+        </nav>
+    </div>
+
+    <script>
+        const conferences = {{ .conferences }};
+        const toast = {{ .toast }};
+
+        if (toast.toast !== "") {
+            document.addEventListener("DOMContentLoaded", function () {
+                var toastEl = $('#toast-sub-res');
+                var toastBs = new bootstrap.Toast(toastEl);
+                if (toast.toast === "success") {
+                    toastEl.addClass('bg-success');
+                } else {
+                    toastEl.addClass('bg-danger');
+                }
+                toastBs.show()
+            });
+        }
+    </script>
+    <script src="/static/home.js"></script>
+    <script src="/static/home-analytics.js"></script>
+    <script async src="https://embeds.beehiiv.com/attribution.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+body {
+    background-color: #333;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+}
+
+nav {
+    background-color: #1f1f1f;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+#footer a {
+    color: #fff;
+}
+
+#footer a:hover {
+    color: #fec008;
+}
+
+.btn {
+    margin: 5px;
+}
+
+.hx {
+    color: #f3f3f3;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #f7931a;
+    margin: 20px;
+    color: #f3f3f3;
+}
+
+h1 span {
+    color: #f7931a;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #f3f3f3;
+}
+
+h2 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: bold;
+    color: #f3f3f3;
+}
+
+.promo-block {
+    width: 100%;
+    height: 150px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-image: linear-gradient(90deg, #f7931a 50%, transparent 50%), linear-gradient(90deg, #f7931a 50%, transparent 50%), linear-gradient(0deg, #f7931a 50%, transparent 50%), linear-gradient(0deg, #f7931a 50%, transparent 50%);
+    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+    background-size: 15px 3px, 15px 3px, 3px 15px, 3px 15px;
+    background-position: left top, right bottom, left bottom, right top;
+    animation: border-dance 1s infinite linear;
+}
+
+@keyframes border-dance {
+    0% {
+        background-position: left top, right bottom, left bottom, right top;
+    }
+
+    100% {
+        background-position: left 15px top, right 15px bottom, left bottom 15px, right top 15px;
+    }
+}
+
+#map-container {
+    max-width: 800px;
+    max-height: 450px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px;
+}
+
+svg {
+    width: 100%;
+    height: 100%
+}
+
+.conference-pin {
+    fill: #f7931a;
+    stroke: black;
+    stroke-width: 1px;
+}
+
+@media (max-width: 500px) {
+    .mw500-width-75 {
+        width: 75%;
+    }
+    .mw500-width-25 {
+        width: 25%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* 768px is the breakpoint for small devices in Bootstrap */
+    nav .container,
+    .main-body {
+        max-width: 95%;
+    }
+}
+
+@media (min-width: 768px) {
+
+    /* 768px is the breakpoint for small devices in Bootstrap */
+    nav .container,
+    .main-body {
+        max-width: 90%;
+    }
+}
+
+@media (min-width: 992px) {
+
+    /* 992px is the breakpoint for medium devices in Bootstrap */
+    nav .container,
+    .main-body {
+        max-width: 80%;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    /* 1200px is the breakpoint for large devices in Bootstrap */
+    nav .container,
+    .main-body {
+        max-width: 60%;
+    }
+}
+
+tbody a {
+    color: black;
+}
