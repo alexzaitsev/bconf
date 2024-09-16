@@ -148,3 +148,9 @@ svg {
 tbody a {
     color: black;
 }
+
+#reddit iframe {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+}

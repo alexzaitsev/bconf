@@ -26,7 +26,7 @@ $('#link-contact').click(function(){
     gtag('event', 'mailto_contact');
 });
 
-$('#link-reddit').click(function(){
+$('#reddit').click(function(){
     gtag('event', 'reddit');
 });
 

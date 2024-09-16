@@ -30,7 +30,8 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
     <script src="https://kit.fontawesome.com/488a1149ce.js" crossorigin="anonymous"></script>
     <!-- jquery -->
-    <script src="/static/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <!-- bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -41,7 +42,7 @@
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://d3js.org/topojson.v2.min.js"></script>
     <script src="https://d3js.org/d3-geo-projection.v1.min.js"></script>
-    <link rel="stylesheet" href="/static/home.css">
+    <link rel="stylesheet" href="/static/css/home.css">
 </head>
 
 <body>
@@ -84,6 +85,13 @@
                         data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no"
                         style="border-radius: 4px; border: 2px solid #e5e7eb; margin: 0; background-color: transparent;"></iframe>
                 </div>
+
+                <div id="reddit" class="mt-4 w-100">
+                    <blockquote class="reddit-embed-bq" data-embed-locale="en-EN" 
+                        data-embed-height="502">
+                        Posts from the <a href="https://www.reddit.com/r/BitcoinConferences/">bitcoinconferences</a><br>
+                        community on Reddit</blockquote>
+                </div>
             </div>
 
             <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
@@ -108,8 +116,8 @@
                 <a id="link-contact" class="m-3" href="mailto:contact@bconf.org" target="_blank">Contact us</a>
             </div>
             <div class="d-flex justify-content-center align-items-center">
-                <a id="link-reddit" class="ms-3 me-3 mb-3 text-extra-small" href="https://reddit.com/r/BitcoinConferences" target="_blank"><i class="fa-brands fa-reddit"></i> r/BitcoinConferences</a>
-                <a id="link-github" class="ms-3 me-3 mb-3 text-extra-small" href="https://github.com/alexzaitsev/bconf" target="_blank"><i class="fa-brands fa-github"></i> FOSS</a>
+                <a id="link-github" class="ms-3 me-3 mb-3 text-extra-small" href="https://github.com/alexzaitsev/bconf"
+                    target="_blank"><i class="fa-brands fa-github"></i> FOSS</a>
             </div>
         </div>
     </div>
@@ -117,24 +125,13 @@
     <script>
         const conferences = {{ .conferences }};
         const toast = {{ .toast }};
-
-        if (toast.toast !== "") {
-            document.addEventListener("DOMContentLoaded", function () {
-                var toastEl = $('#toast-sub-res');
-                var toastBs = new bootstrap.Toast(toastEl);
-                if (toast.toast === "success") {
-                    toastEl.addClass('bg-success');
-                } else {
-                    toastEl.addClass('bg-danger');
-                }
-                toastBs.show()
-            });
-        }
     </script>
-    <script src="/static/home.js"></script>
-    <script src="/static/home-analytics.js"></script>
+    <script src="/static/js/home.js"></script>
+    <script src="/static/js/analytics.js"></script>
+    <script src="/static/js/popup.js"></script>
+    <script src="/static/js/reddit.js"></script>
     <script async src="https://embeds.beehiiv.com/attribution.js"></script>
-
+    <script async="" src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
 </body>
 
 </html>
