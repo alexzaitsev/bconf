@@ -1,15 +1,13 @@
 const website = "bconf.org"
 const width = 800;
 const height = 450;
-const regularColor = "#75706f";
-const hoverColor = "#fec008";
-const selectedColor = "#f7931a";
-const strokeColor = "#f3f3f3"
+const regularColor = $(":root").css("--color-dark-bg").trim();
+const hoverColor = "rgba(247, 147, 26, 0.75)"; // --color-dark-attention, 75% opacity
+const selectedColor = $(":root").css("--color-dark-attention").trim();
+const borderColor = $(":root").css("--color-dark-contrast").trim();
 
-var color = d3.scaleOrdinal();
-
-var graticule = d3.geoGraticule();
 var svg = d3.select("#world-map");
+let firstLoad = true;
 
 //https://bl.ocks.org/mbostock/3710082
 var projection = d3.geoKavrayskiy7()
@@ -30,17 +28,24 @@ d3.json(data, function (error, topology) {
         .enter()
         .append("path")
         .attr("d", path)
-        .style("stroke", strokeColor)
-        .style("stroke-width", 0.3)
+        .style("stroke", borderColor)
+        .style("stroke-width", 0.5)
+        .style("stroke-dasharray", "4,2")
         .style("fill", regularColor)
         .on("mouseover", function (d, i) {
             if (d.properties.continent != selectedContinent) {
-                d3.select(this).style("fill", hoverColor);
+                d3.select(this)
+                    .transition()
+                    .duration(300)
+                    .style("fill", hoverColor);
             }
         })
         .on("mouseout", function (d, i) {
             if (d.properties.continent != selectedContinent) {
-                d3.select(this).style("fill", regularColor);
+                d3.select(this)
+                    .transition()
+                    .duration(300)
+                    .style("fill", regularColor);
             }
         })
         .on("click", function (d, i) {
@@ -85,13 +90,50 @@ function updateMap() {
             .attr("r", 3); // Radius of the dot
     });
 
-    const conferenceWord = (filtered.length === 1) ? "conference" : "conferences";
-    const title1 = `Explore <span>${filtered.length} </span>Bitcoin ${conferenceWord}<br>`
     if (selectedContinent) {
-        document.getElementById('main-title').innerHTML = `${title1}<span>in ${selectedContinent}</span>`
+        $('#map-hint').animate({ opacity: 0 }, 150, function () {
+            $(this).addClass('invisible').css('opacity', ''); // Add 'invisible' after fade out
+        });
     } else {
-        document.getElementById('main-title').innerHTML = `${title1}<span>worldwide</span>`
+        $('#map-hint').removeClass('invisible').css('opacity', 0).animate({ opacity: 1 }, 150); // Fade in
     }
+
+    const conferenceWording = (filtered.length === 1) ? "conference" : "conferences";
+    const h1 = `Explore ${filtered.length} Bitcoin <br>${conferenceWording}`
+    if (firstLoad) {
+        $('h1').html(h1); // on page load
+    } else {
+        d3.select('h1')
+            .transition()
+            .duration(150)
+            .style("opacity", 0.5) // Fade out
+            .on("end", function () {
+                d3.select(this)
+                    .html(h1)
+                    .transition()
+                    .duration(150)
+                    .style("opacity", 1); // Fade in
+            });
+    }
+
+    const h2 = selectedContinent ? `in ${selectedContinent}` : 'Worldwide'
+    if (firstLoad) {
+        $('h2').html(h2); // on page load
+    } else {
+        d3.select('h2')
+            .transition()
+            .duration(150)
+            .style("opacity", 0.5) // Fade out
+            .on("end", function () {
+                d3.select(this)
+                    .html(h2)
+                    .transition()
+                    .duration(150)
+                    .style("opacity", 1); // Fade in
+            });
+    }
+
+    firstLoad = false;
 }
 
 
@@ -129,11 +171,9 @@ function updateTable() {
     });
 
     if (filteredConferences.length == 0) {
-        document.getElementById('conf-table').classList.remove('d-block');
-        document.getElementById('conf-table').classList.add('d-none');
+        $('#conf-table').removeClass('d-block').addClass('d-none');
     } else {
-        document.getElementById('conf-table').classList.remove('d-none');
-        document.getElementById('conf-table').classList.add('d-block');
+        $('#conf-table').removeClass('d-none').addClass('d-block');
     }
     clearSelection();
 }
@@ -166,7 +206,7 @@ function getDataRange(conf) {
 function getAddToCalendar(conf) {
     const title = conf.Name
     const description1 = `Join us for a Bitcoin conference in ${conf.Location}. More details here ${getUTMedURL(conf)}.`
-    const description2 = `Stay updated with all the latest Bitcoin conferences by subscribing to our calendar at https://${website}/#subscription-form.`
+    const description2 = `Stay updated with all the latest Bitcoin conferences by subscribing to our calendar at https://${website}/#subscription.`
     const descriptionGoogle = `${description1}
     
 ${description2}`
@@ -247,7 +287,7 @@ function getFullMonth(month) {
 
 updateTable()
 
-document.addEventListener("DOMContentLoaded", function (e) {
+$(function () {
     // Wait until the paths are appended
     const interval = setInterval(() => {
         const pathExists = svg.selectAll("path").size() > 0;
