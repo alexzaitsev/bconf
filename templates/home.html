@@ -47,77 +47,104 @@
 
 <body>
     <div class="min-vh-100 d-flex flex-column justify-content-between">
-        <div>
-            <div class="nav-block">
-                <div class="container d-flex justify-content-end align-items-center">
-                    <div id="link-subscribe" class="d-flex align-items-center"
-                        onclick="window.location.href='#subscription-form';" style="cursor: pointer;">
-                        <span class="fw-bold m-2 mw500-width-25 hx">Get monthly updates</span>
-                        <iframe src="https://embeds.beehiiv.com/a6b44755-b9cd-4f60-a5bd-4517e1028864?slim=true"
-                            class="mt-2 mb-2 ms-2 mw500-width-75" data-test-id="beehiiv-embed" height="52"
-                            frameborder="0" scrolling="no"
-                            style="margin: 0; border-radius: 0px !important; background-color: transparent; pointer-events: none;"></iframe>
-                    </div>
+        <!-- attraction strip -->
+        <div class="attraction-strip d-flex justify-content-center align-items-center">
+            <span>Get monthly updates. <a id="link-subscribe" href="#subscription">Subscribe now.</a></span>
+        </div>
+
+        <!-- main body -->
+        <div class="main-body mx-auto">
+            <h1 class="m-3">Explore Bitcoin<br>Conferences</h1>
+            <h2 class="m-3">Worldwide</h2>
+
+            <div id="map-container">
+                <svg id="world-map" viewBox="0 0 800 375" preserveAspectRatio="xMidYMid meet"></svg>
+            </div>
+
+            <div id="map-hint" class="my-3 d-flex justify-content-center align-items-center">
+                <span class="text-extra-small text-color-secondary">(click on a continent to filter upcoming conferences
+                    by location)</span>
+            </div>
+
+            <div class="banner py-3 px-5 d-flex justify-content-between align-items-center">
+                <div class="me-3 d-flex flex-column align-items-start">
+                    <h3 class="text-start">Showcase Your<br>Bitcoin Conference</h3>
+                    <a id="link-submit-banner" class="btn-bconf" href="/submit" target="_blank">List Your
+                        Conference</a>
+                </div>
+                <img id="btc-logo" class="me-md-5 me-lg-7" src="/static/bitcoin-logo.svg" width="100px" height="100px" alt="banner logo"/>
+            </div>
+
+            <div id="conf-table" class="table-responsive card mx-auto mt-4">
+                <table class="table table-striped table-bordered">
+                    <thead id="conf-table-head"></thead>
+                    <tbody id="conf-table-body"></tbody>
+                </table>
+            </div>
+
+            <div id="subscription" class="w-100 mt-4 p-0">
+                <iframe src="https://embeds.beehiiv.com/d73bea66-eba3-46a9-b809-ab3f803e1bd1"
+                    data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no"
+                    style="border-radius: 4px; border: 1px solid var(--color-dark-border); margin: 0; background-color: transparent;"></iframe>
+            </div>
+        </div>
+
+        <!-- divider -->
+        <div class="divider w-100 mt-4"></div>
+
+        <!-- footer -->
+        <div class="main-body container mt-4">
+            <!-- For medium and larger devices: 1 row with space in the middle -->
+            <!-- For small devices: 2 rows, no space in the middle -->
+            <div class="row d-none d-md-flex justify-content-between">
+                <div class="col-auto">
+                    <a id="link-sponsor" class="m-3 no-break"
+                        href="mailto:contact@bconf.org?subject=Sponsor%20inquiry%20for%20X%20conference"
+                        target="_blank">Become a sponsor</a>
+                    <a id="link-contact" class="m-3 no-break" href="mailto:contact@bconf.org" target="_blank">Contact
+                        us</a>
+                    <a id="link-submit-bottom" class="m-3 no-break" href="/submit" target="_blank">Submit conference</a>
+                </div>
+                <div class="col-auto">
+                    <a id="link-github" class="m-3 no-break" href="https://github.com/alexzaitsev/bconf"
+                        target="_blank"><i class="fa-brands fa-github"></i>
+                        FOSS</a>
                 </div>
             </div>
 
-            <div class="main-body mx-auto">
-                <h1 id="main-title"></h1>
-
-                <div id="map-container">
-                    <svg id="world-map" viewBox="0 0 800 450" preserveAspectRatio="xMidYMid meet"></svg>
+            <!-- Small devices layout (2 rows, no middle space) -->
+            <div class="row d-flex d-md-none">
+                <div class="col-12 mb-2">
+                    <a id="link-sponsor" class="m-3 no-break"
+                        href="mailto:contact@bconf.org?subject=Sponsor%20inquiry%20for%20X%20conference"
+                        target="_blank">Become a sponsor</a>
+                    <a id="link-contact" class="m-3 no-break" href="mailto:contact@bconf.org" target="_blank">Contact
+                        us</a>
+                    <a id="link-submit-bottom" class="m-3 no-break" href="/submit" target="_blank">Submit conference</a>
                 </div>
-
-                <div class="promo-block d-flex flex-column justify-content-center align-items-center">
-                    <h2>Showcase Your Bitcoin Conference Globally</h2>
-                    <a id="link-submit" class="btn btn-warning" href="/submit" target="_blank">List Your Conference</a>
-                </div>
-
-                <div id="conf-table" class="table-responsive card mx-auto mt-4">
-                    <table class="table table-striped table-bordered">
-                        <thead id="conf-table-head"></thead>
-                        <tbody id="conf-table-body"></tbody>
-                    </table>
-                </div>
-
-                <div id="subscription-form" class="w-100 mt-4 p-0">
-                    <iframe src="https://embeds.beehiiv.com/a6b44755-b9cd-4f60-a5bd-4517e1028864"
-                        data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no"
-                        style="border-radius: 4px; border: 2px solid #e5e7eb; margin: 0; background-color: transparent;"></iframe>
-                </div>
-
-                <div id="reddit" class="mt-4 w-100">
-                    <blockquote class="reddit-embed-bq" data-embed-locale="en-EN" 
-                        data-embed-height="502">
-                        Posts from the <a href="https://www.reddit.com/r/BitcoinConferences/">bitcoinconferences</a><br>
-                        community on Reddit</blockquote>
-                </div>
-            </div>
-
-            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-                <div id="toast-sub-res" class="toast hide align-items-center text-white border-0" role="alert"
-                    aria-live="assertive" aria-atomic="true">
-                    <div class="d-flex">
-                        <div class="toast-body">
-                            {{ .toast.message }}
-                        </div>
-                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
-                            aria-label="Close"></button>
-                    </div>
+                <div class="col-12">
+                    <a id="link-github" class="m-3 no-break" href="https://github.com/alexzaitsev/bconf"
+                        target="_blank"><i class="fa-brands fa-github"></i>
+                        FOSS</a>
                 </div>
             </div>
         </div>
 
-        <div id="footer" class="nav-block mt-4">
-            <div class="container d-flex justify-content-center align-items-center">
-                <a class="m-3 d-none" href="https://bconf.beehiiv.com" target="_blank">Our newsletter archive</a>
-                <a id="link-sponsor" class="m-3 fw-bold" href="mailto:contact@bconf.org" target="_blank">Become a
-                    sponsor</a>
-                <a id="link-contact" class="m-3" href="mailto:contact@bconf.org" target="_blank">Contact us</a>
-            </div>
-            <div class="d-flex justify-content-center align-items-center">
-                <a id="link-github" class="ms-3 me-3 mb-3 text-extra-small" href="https://github.com/alexzaitsev/bconf"
-                    target="_blank"><i class="fa-brands fa-github"></i> FOSS</a>
+        <div class="my-3 d-flex justify-content-center align-items-center">
+            <span class="main-body text-extra-small text-color-secondary">bconf.org © 2024. All rights reserved.</span>
+        </div>
+
+        <!-- toast -->
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+            <div id="toast-sub-res" class="toast hide align-items-center text-white border-0" role="alert"
+                aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        {{ .toast.message }}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                        aria-label="Close"></button>
+                </div>
             </div>
         </div>
     </div>
@@ -129,9 +156,7 @@
     <script src="/static/js/home.js"></script>
     <script src="/static/js/analytics.js"></script>
     <script src="/static/js/popup.js"></script>
-    <script src="/static/js/reddit.js"></script>
     <script async src="https://embeds.beehiiv.com/attribution.js"></script>
-    <script async="" src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
 </body>
 
 </html>

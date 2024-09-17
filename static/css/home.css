@@ -1,88 +1,175 @@
+:root {
+    --color-dark-bg: black;
+    --color-dark-fg: white;
+    --color-dark-border: #3f4142;
+    --color-dark-text-primary: #C8CBCA;
+    --color-dark-text-secondary: #7E8180;
+    --color-dark-attention: #f7931a;
+    --color-dark-attention-text: black;
+    --color-dark-contrast: #f3f3f3;
+}
+
+::selection {
+    background-color: #ffcb5b;
+}
+
 body {
-    background-color: #333;
+    background-color: var(--color-dark-bg);
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-style: normal;
     text-align: center;
 }
 
-.nav-block {
-    background-color: #1f1f1f;
+a {
+    color: var(--color-dark-text-primary);
 }
 
-.nav-block a {
-    text-decoration: none;
+a:hover {
+    color: var(--color-dark-attention);
 }
 
-#footer a {
-    color: #f3f3f3;
+.text-color-secondary {
+    color: var(--color-dark-text-secondary);
 }
 
-#footer a:hover {
-    color: #fec008;
+.divider {
+    height: 1px;
+    background-color: var(--color-dark-border);
 }
 
-.hx {
-    color: #f3f3f3;
+.attraction-strip {
+    height: 50px;
+    background-color: var(--color-dark-attention);
+    color: var(--color-dark-attention-text);
+    font-weight: 600;
+    font-style: normal;
 }
 
-.btn {
-    margin: 5px;
+.attraction-strip a {
+    color: var(--color-dark-attention-text);
+}
+
+.attraction-strip a:hover {
+    color: var(--color-dark-fg);
 }
 
 .text-extra-small {
     font-size: 0.75rem;
 }
 
-h1 {
-    text-transform: uppercase;
-    font-family: "Poppins", sans-serif;
-    font-weight: 700;
-    font-style: italic;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #f7931a;
-    margin: 20px;
-    color: #f3f3f3;
+.no-break {
+    white-space: nowrap;
 }
 
-h1 span {
-    color: #f7931a;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #f3f3f3;
+h1 {
+    text-transform: capitalize;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: var(--color-dark-contrast);
 }
 
 h2 {
     font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    font-style: bold;
-    color: #f3f3f3;
+    font-weight: 600;
+    color: var(--color-dark-attention);
 }
 
-.promo-block {
+h3 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+}
+
+.btn-bconf {
+    background-color: var(--color-dark-bg);
+    color: var(--color-dark-contrast);
+    border-radius: 24px;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    text-decoration: none;
+    padding: 10px 15px;
+    padding-left: 33px;
+    transition: color 0.3s ease;
+    font-size: 0.75em;
+}
+
+.btn-bconf::before {
+    content: "\f0a9";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 15px;
+    color: var(--color-dark-contrast);
+    transition: color 0.3s ease;
+}
+
+.btn-bconf:hover {
+    background-color: var(--color-dark-fg);
+    color: var(--color-dark-attention);
+}
+
+.btn-bconf:hover::before {
+    background-color: var(--color-dark-fg);
+    color: var(--color-dark-attention);
+}
+
+.banner {
     width: 100%;
     height: 150px;
     border-radius: 8px;
-    box-sizing: border-box;
-    background-image: linear-gradient(90deg, #f7931a 50%, transparent 50%), linear-gradient(90deg, #f7931a 50%, transparent 50%), linear-gradient(0deg, #f7931a 50%, transparent 50%), linear-gradient(0deg, #f7931a 50%, transparent 50%);
-    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
-    background-size: 15px 3px, 15px 3px, 3px 15px, 3px 15px;
-    background-position: left top, right bottom, left bottom, right top;
-    animation: border-dance 1s infinite linear;
+    background: linear-gradient(-45deg, #ffb347, #e67e00, #d97920, #f7931a);
+    background-size: 400% 400%;
+    animation: gradient 7s ease infinite;
 }
 
-@keyframes border-dance {
+@keyframes gradient {
     0% {
-        background-position: left top, right bottom, left bottom, right top;
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
     }
 
     100% {
-        background-position: left 15px top, right 15px bottom, left bottom 15px, right top 15px;
+        background-position: 0% 50%;
+    }
+}
+
+#btc-logo:hover {
+    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+@keyframes shake {
+
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
     }
 }
 
 #map-container {
     max-width: 800px;
-    max-height: 450px;
     margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
@@ -95,62 +182,65 @@ svg {
 }
 
 .conference-pin {
-    fill: #f7931a;
-    stroke: black;
+    fill: var(--color-dark-bg);
+    stroke: var(--color-dark-attention);
     stroke-width: 1px;
 }
 
 @media (max-width: 500px) {
-    .mw500-width-75 {
-        width: 75%;
-    }
-    .mw500-width-25 {
-        width: 25%;
+    .banner {
+        height: 200px;
     }
 }
 
 @media (max-width: 768px) {
 
     /* 768px is the breakpoint for small devices in Bootstrap */
-    .nav-block .container,
     .main-body {
         max-width: 95%;
+    }
+
+    #map-container {
+        height: 250px;
     }
 }
 
 @media (min-width: 768px) {
 
     /* 768px is the breakpoint for small devices in Bootstrap */
-    .nav-block .container,
     .main-body {
         max-width: 90%;
+    }
+
+    #map-container {
+        height: 275px;
     }
 }
 
 @media (min-width: 992px) {
 
     /* 992px is the breakpoint for medium devices in Bootstrap */
-    .nav-block .container,
     .main-body {
         max-width: 80%;
+    }
+
+    #map-container {
+        height: 300px;
     }
 }
 
 @media (min-width: 1200px) {
 
     /* 1200px is the breakpoint for large devices in Bootstrap */
-    .nav-block .container,
     .main-body {
         max-width: 60%;
+    }
+
+    #map-container {
+        height: 400px;
     }
 }
 
 tbody a {
     color: black;
-}
-
-#reddit iframe {
-    display: block;
-    width: 100% !important;
-    max-width: 100% !important;
 }
