@@ -1,0 +1,42 @@
+#map-container {
+    max-width: 800px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px;
+}
+
+svg {
+    width: 100%;
+    height: 100%
+}
+
+.conference-pin {
+    fill: var(--color-dark-bg);
+    stroke: var(--color-dark-attention);
+    stroke-width: 1px;
+}
+
+@media (max-width: 768px) {
+    #map-container {
+        height: 250px;
+    }
+}
+
+@media (min-width: 768px) {
+    #map-container {
+        height: 275px;
+    }
+}
+
+@media (min-width: 992px) {
+    #map-container {
+        height: 300px;
+    }
+}
+
+@media (min-width: 1200px) {
+    #map-container {
+        height: 400px;
+    }
+}
