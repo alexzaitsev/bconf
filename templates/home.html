@@ -43,6 +43,8 @@
     <script src="https://d3js.org/topojson.v2.min.js"></script>
     <script src="https://d3js.org/d3-geo-projection.v1.min.js"></script>
     <link rel="stylesheet" href="/static/css/home.css">
+    <link rel="stylesheet" href="/static/css/map.css">
+    <link rel="stylesheet" href="/static/css/conference_card.css">
 </head>
 
 <body>
@@ -72,15 +74,11 @@
                     <a id="link-submit-banner" class="btn-bconf" href="/submit" target="_blank">List Your
                         Conference</a>
                 </div>
-                <img id="btc-logo" class="me-md-5 me-lg-7" src="/static/bitcoin-logo.svg" width="100px" height="100px" alt="banner logo"/>
+                <img id="btc-logo" class="me-md-5 me-lg-7" src="/static/bitcoin-logo.svg" width="100px" height="100px"
+                    alt="banner logo" />
             </div>
 
-            <div id="conf-table" class="table-responsive card mx-auto mt-4">
-                <table class="table table-striped table-bordered">
-                    <thead id="conf-table-head"></thead>
-                    <tbody id="conf-table-body"></tbody>
-                </table>
-            </div>
+            <div id="conference-cards" class="row"></div>
 
             <div id="subscription" class="w-100 mt-4 p-0">
                 <iframe src="https://embeds.beehiiv.com/d73bea66-eba3-46a9-b809-ab3f803e1bd1"
@@ -153,8 +151,10 @@
         const conferences = {{ .conferences }};
         const toast = {{ .toast }};
     </script>
-    <script src="/static/js/home.js"></script>
+    <script src="/static/js/map.js"></script>
+    <script src="/static/js/conferences.js"></script>
     <script src="/static/js/analytics.js"></script>
+    <script src="/static/js/conference_card.js"></script>
     <script src="/static/js/popup.js"></script>
     <script async src="https://embeds.beehiiv.com/attribution.js"></script>
 </body>
