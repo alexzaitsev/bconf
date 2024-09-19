@@ -4,7 +4,12 @@ function addCard(container, conf) {
     $.get('/static/html/conference_card.html', function (cardHTML) {
         let card = $(cardHTML);
         let [googleCalUrl, appleCalUrl] = getCalendarURLs(conf);
-        
+
+        if (conf.SponsoredTo) {
+            card.find('.card-front').addClass('card-sponsored');
+            card.find('.card-back').addClass('card-sponsored');
+        }
+
         // front
         card.find('.card-front').css('background-image', `url(${conf.PictureUrl})`);
         card.find('#conference-name').text(conf.Name);

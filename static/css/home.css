@@ -78,8 +78,11 @@ a:hover {
     width: 100%;
 }
 
-h1 {
+#header-main {
     text-transform: capitalize;
+}
+
+h1 {
     font-family: "Poppins", sans-serif;
     font-weight: 600;
     color: var(--color-dark-contrast);
