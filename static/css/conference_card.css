@@ -30,6 +30,11 @@
     border-radius: 8px;
 }
 
+.card-sponsored {
+    border: 5px solid var(--color-dark-attention);
+    border-radius: 8px;
+}
+
 .card-front,
 .card-back {
     position: absolute;

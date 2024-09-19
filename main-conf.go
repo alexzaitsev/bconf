@@ -75,8 +75,40 @@ func FetchConferences(ctx context.Context, firestoreClient *firestore.Client) ([
 			return nil, err
 		}
 
+		conf.SponsoredType = parseSponsored(doc, conf)
+
+		// if conf.PictureUrl == "" {
+		// 	conf.PictureUrl = "https://t4.ftcdn.net/jpg/02/83/83/93/360_F_283839302_yt6JIsE96Pj4PydFDcBNKDUnuSpYB9h0.jpg"
+		// }
+
 		conferences = append(conferences, conf)
 	}
 
 	return conferences, nil
+}
+
+func parseSponsored(doc *firestore.DocumentSnapshot, conf Conference) SponsoredType {
+	if sponsoredTypeValue, ok := doc.Data()["sponsored_type"].(string); ok {
+		if conf.SponsoredFrom != "" && conf.SponsoredTo != "" {
+			sponsoredFrom, errFrom := time.Parse("2006-01-02", conf.SponsoredFrom)
+			sponsoredTo, errTo := time.Parse("2006-01-02", conf.SponsoredTo)
+
+			if errFrom == nil && errTo == nil {
+				now := time.Now().UTC()
+
+				// Check if current date is between SponsoredFrom (inclusive) and SponsoredTo (exclusive)
+				if now.After(sponsoredFrom) && now.Before(sponsoredTo) {
+					return ParseSponsoredType(sponsoredTypeValue)
+				} else {
+					return SponsoredTypeNone
+				}
+			} else {
+				return SponsoredTypeNone // Default if date parsing fails
+			}
+		} else {
+			return SponsoredTypeNone // Default if SponsoredFrom or SponsoredTo is empty
+		}
+	} else {
+		return SponsoredTypeNone // Default if no sponsored_type value found
+	}
 }

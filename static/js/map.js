@@ -94,9 +94,9 @@ function update() {
     const conferenceWording = (filtered.length === 1) ? "conference" : "conferences";
     const h1 = `Explore ${filtered.length} Bitcoin <br>${conferenceWording}`
     if (firstLoad) {
-        $('h1').html(h1); // on page load
+        $('#header-main').html(h1); // on page load
     } else {
-        d3.select('h1')
+        d3.select('#header-main')
             .transition()
             .duration(150)
             .style("opacity", 0.5) // Fade out
@@ -111,9 +111,9 @@ function update() {
 
     const h2 = selectedContinent ? `in ${selectedContinent}` : 'Worldwide'
     if (firstLoad) {
-        $('h2').html(h2); // on page load
+        $('#header-secondary').html(h2); // on page load
     } else {
-        d3.select('h2')
+        d3.select('#header-secondary')
             .transition()
             .duration(150)
             .style("opacity", 0.5) // Fade out
