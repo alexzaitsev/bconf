@@ -4,19 +4,18 @@ function addCard(container, conf) {
     $.get('/static/html/conference_card.html', function (cardHTML) {
         let card = $(cardHTML);
         let [googleCalUrl, appleCalUrl] = getCalendarURLs(conf);
-        let [_, startMonth, startDay] = parseDate(conf.StartDate);
+        let flags = ['🇺🇸', '🇨🇦', '🇬🇧', '🇦🇺', '🇯🇵'];
+        let flag = flags[Math.floor(Math.random() * flags.length)];
 
         // front
         card.find('.card-front').css('background-image', `url(${conf.PictureUrl})`);
         card.find('#conference-name').text(conf.Name);
+        card.find('#conference-dates').text(getDatesRange(conf));
         card.find('#conference-city').text(conf.Location.split(", ")[0]);
-        card.find('#conference-country').text(conf.Location.split(", ")[1]);
-        card.find('#conference-start-day').text(startDay);
-        card.find('#conference-start-month').text(getShortMonth(startMonth));
+        card.find('#conference-country').html(`${conf.Location.split(", ")[1]} <span style="font-size: 1.7em; position: relative; top: 3px;">${flag}</span>`);
 
         // back
         card.find('.card-back').css('background-image', `url(${conf.PictureUrl})`);
-        card.find('#conference-dates').text(getDatesRange(conf));
         card.find('#conference-calendar-google').attr('href', googleCalUrl);
         card.find('#conference-calendar-apple').attr('href', appleCalUrl);
         card.find('#conference-calendar-apple').attr('download', `${conf.Name}.ics`);

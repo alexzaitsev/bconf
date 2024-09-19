@@ -131,11 +131,6 @@
     }
 }
 
-.dates-overlay {
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
-}
-
 .conference-front-name {
     width: 100%;
     height: 70%;
@@ -147,18 +142,6 @@
     backdrop-filter: blur(5px);
     border-radius: 0 0 8px 8px;
 }
-
-/* conference-front-info === START */
-.conference-front-location {
-    width: 70%;
-    height: 100%;
-}
-
-.conference-front-dates {
-    width: 30%;
-    height: 100%;
-}
-/* conference-front-info === END */
 
 .conference-cta {
     border-radius: 24px;

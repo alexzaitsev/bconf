@@ -33,6 +33,10 @@ a:hover {
     color: var(--color-dark-text-secondary);
 }
 
+.text-color-bg {
+    color: var(--color-dark-bg);
+}
+
 .divider {
     height: 1px;
     background-color: var(--color-dark-border);
@@ -52,6 +56,10 @@ a:hover {
 
 .attraction-strip a:hover {
     color: var(--color-dark-fg);
+}
+
+.text-small {
+    font-size: 0.85rem;
 }
 
 .text-extra-small {
@@ -105,6 +113,11 @@ h6 {
 
 .h7 {
     font-size: 0.9rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+}
+
+.h {
     font-family: "Poppins", sans-serif;
     font-weight: 600;
 }
