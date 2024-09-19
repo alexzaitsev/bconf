@@ -8,6 +8,9 @@ function addCard(container, conf) {
         if (conf.SponsoredType) {
             card.find('.card-front').addClass('card-sponsored');
             card.find('.card-back').addClass('card-sponsored');
+            card.find('#conference-sponsored').addClass('d-block')
+        } else {
+            card.find('#conference-sponsored').addClass('d-none')
         }
 
         // front
