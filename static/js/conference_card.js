@@ -5,7 +5,7 @@ function addCard(container, conf) {
         let card = $(cardHTML);
         let [googleCalUrl, appleCalUrl] = getCalendarURLs(conf);
 
-        if (conf.SponsoredTo) {
+        if (conf.SponsoredType) {
             card.find('.card-front').addClass('card-sponsored');
             card.find('.card-back').addClass('card-sponsored');
         }
