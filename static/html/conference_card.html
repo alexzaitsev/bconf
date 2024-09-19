@@ -4,40 +4,35 @@
             <div class="card-front">
                 <div class="card-overlay"></div>
                 <div class="card-content">
-                    <div class="conference-front-name p-3 d-flex flex-column justify-content-center align-items-center">
+                    <div class="conference-front-name p-2 d-flex flex-column justify-content-center align-items-center">
                         <h6 id="conference-name"></h6>
+                        <span id="conference-dates" class="text-small ellipsize mt-2"></span>
                     </div>
-                    <div class="conference-front-info d-flex justify-content-between py-2 px-2">
-                        <div
-                            class="conference-front-location d-flex flex-column justify-content-center align-items-start mr-2">
-                            <span id="conference-city" class="h7"></span>
-                            <span id="conference-country" class="text-extra-small"></span>
-                        </div>
-                        <div
-                            class="conference-front-dates dates-overlay  d-flex flex-column justify-content-center px-1 py-2">
-                            <span id="conference-start-day" class="h7"></span>
-                            <span id="conference-start-month" class="text-extra-small"></span>
-                        </div>
+                    <div
+                        class="conference-front-info d-flex flex-column justify-content-center align-items-start py-2 px-2">
+                        <span id="conference-city" class="h7" style="position: relative; top: 4px;"></span>
+                        <span id="conference-country" class="text-extra-small" style="position: relative; top: -4px;"></span>
                     </div>
                 </div>
             </div>
 
             <div class="card-back">
                 <div class="card-back-overlay"></div>
-                <div class="card-content p-3">
-                    <h6 id="conference-dates" class="ellipsize"></h6>
-                    <div class="add-to-calendar pb-3">
-                        <p class="text-extra-small">Add to calendar</p>
+                <div class="card-content d-flex flex-column justify-content-between p-3">
+                    <div class="add-to-calendar">
+                        <p class="text-small">Add to calendar</p>
                         <div class="calendar-buttons d-flex justify-content-center gap-4">
-                            <a id="conference-calendar-google" href="" class="btn btn-sm btn-outline-light" target="_blank">
+                            <a id="conference-calendar-google" href="" class="btn btn-sm btn-outline-light"
+                                target="_blank">
                                 <i class="fab fa-google"></i>
                             </a>
-                            <a id="conference-calendar-apple" href="" class="btn btn-sm btn-outline-light" target="_blank">
+                            <a id="conference-calendar-apple" href="" class="btn btn-sm btn-outline-light"
+                                target="_blank">
                                 <i class="fab fa-apple"></i>
                             </a>
                         </div>
                     </div>
-                    <div class="pb-3">
+                    <div>
                         <a id="conference-url" href="" class="conference-cta btn btn-outline-light" target="_blank">
                             <i class="fas fa-link"></i> Website
                         </a>
