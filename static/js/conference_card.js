@@ -4,15 +4,13 @@ function addCard(container, conf) {
     $.get('/static/html/conference_card.html', function (cardHTML) {
         let card = $(cardHTML);
         let [googleCalUrl, appleCalUrl] = getCalendarURLs(conf);
-        let flags = ['🇺🇸', '🇨🇦', '🇬🇧', '🇦🇺', '🇯🇵'];
-        let flag = flags[Math.floor(Math.random() * flags.length)];
-
+        
         // front
         card.find('.card-front').css('background-image', `url(${conf.PictureUrl})`);
         card.find('#conference-name').text(conf.Name);
         card.find('#conference-dates').text(getDatesRange(conf));
         card.find('#conference-city').text(conf.Location.split(", ")[0]);
-        card.find('#conference-country').html(`${conf.Location.split(", ")[1]} <span style="font-size: 1.7em; position: relative; top: 3px;">${flag}</span>`);
+        card.find('#conference-country').html(`${conf.Location.split(", ")[1]} <span style="font-size: 1.7em; position: relative; top: 3px;">${conf.Flag}</span>`);
 
         // back
         card.find('.card-back').css('background-image', `url(${conf.PictureUrl})`);
