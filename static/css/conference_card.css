@@ -10,7 +10,15 @@
     width: 25%;
     height: 200px;
     padding: 10px;
-    color: var(--color-dark-contrast)
+    color: var(--color-dark-contrast);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 1;
+    transform: translateY(0); /* Return to normal position */
+}
+
+.card-hidden {
+    opacity: 0;
+    transform: translateY(20px); /* Optional: Add slight slide-in effect */
 }
 
 .card-container {
