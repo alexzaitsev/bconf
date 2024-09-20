@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"log"
+	"sort"
 	"time"
 
 	"cloud.google.com/go/firestore"
@@ -83,6 +84,14 @@ func FetchConferences(ctx context.Context, firestoreClient *firestore.Client) ([
 
 		conferences = append(conferences, conf)
 	}
+
+	sort.SliceStable(conferences, func(i, j int) bool {
+		// Prioritize "card_top" SponsoredType
+		if conferences[i].SponsoredType == SponsoredTypeCardTop && conferences[j].SponsoredType != SponsoredTypeCardTop {
+			return true
+		}
+		return false
+	})
 
 	return conferences, nil
 }
