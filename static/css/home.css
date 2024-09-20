@@ -29,6 +29,10 @@ a:hover {
     color: var(--color-dark-attention);
 }
 
+.text-color-primary {
+    color: var(--color-dark-text-primary);
+}
+
 .text-color-secondary {
     color: var(--color-dark-text-secondary);
 }

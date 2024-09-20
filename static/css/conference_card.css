@@ -34,6 +34,11 @@
     border-radius: 8px;
 }
 
+.card-promoted {
+    border: 5px solid var(--color-dark-contrast);
+    border-radius: 8px;
+}
+
 .card-front,
 .card-back {
     position: absolute;
@@ -160,4 +165,10 @@
 
 .conference-cta {
     border-radius: 24px;
+}
+
+#conference-promo-code {
+    width: 100%;
+    backdrop-filter: blur(5px);
+    border-radius: 0 0 6px 6px;
 }

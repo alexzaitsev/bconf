@@ -5,12 +5,23 @@ function addCard(container, conf) {
         let card = $(cardHTML);
         let [googleCalUrl, appleCalUrl] = getCalendarURLs(conf);
 
-        if (conf.SponsoredType) {
+        if (conf.PromoCode && conf.SponsoredType || conf.SponsoredType) {
+            // if both promoted AND sponsored OR sponsored only
             card.find('.card-front').addClass('card-sponsored');
             card.find('.card-back').addClass('card-sponsored');
-            card.find('#conference-sponsored').addClass('d-block')
+        } else if (conf.PromoCode) {
+            card.find('.card-front').addClass('card-promoted');
+            card.find('.card-back').addClass('card-promoted');
+        }
+
+        if (conf.PromoCode) {
+            card.find('#conference-promo-code').html(`Use <b>${conf.PromoCode}</b> to get <b>${conf.PromoCodeDiscount}</b> off`);
         } else {
-            card.find('#conference-sponsored').addClass('d-none')
+            card.find('#conference-promoted').addClass('d-none');
+        }
+
+        if (!conf.SponsoredType) {
+            card.find('#conference-sponsored').addClass('d-none');
         }
 
         // front
