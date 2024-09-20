@@ -21,15 +21,15 @@ type Conference struct {
 type SponsoredType string
 
 const (
-	SponsoredTypeCardHighlight SponsoredType = "card_highlight"
-	SponsoredTypeCardTop       SponsoredType = "card_top"
-	SponsoredTypeNone          SponsoredType = "" // For null or no match
+	SponsoredTypeCardFrame SponsoredType = "card_frame"
+	SponsoredTypeCardTop   SponsoredType = "card_top"
+	SponsoredTypeNone      SponsoredType = "" // For null or no match
 )
 
 func ParseSponsoredType(value string) SponsoredType {
 	switch value {
-	case string(SponsoredTypeCardHighlight):
-		return SponsoredTypeCardHighlight
+	case string(SponsoredTypeCardFrame):
+		return SponsoredTypeCardFrame
 	case string(SponsoredTypeCardTop):
 		return SponsoredTypeCardTop
 	default:
