@@ -37,7 +37,13 @@ function addCard(container, cardHTML, conf) {
     card.find('#conference-calendar-apple').attr('download', `${conf.Name}.ics`);
     card.find('#conference-url').attr('href', getUTMedURL(conf));
 
+    card.addClass('card-hidden');
     container.append(card);
+
+    // Use a slight delay to allow the animation to take effect
+    setTimeout(() => {
+        card.removeClass('card-hidden');
+    }, 100);
 }
 
 function getUTMedURL(conf) {
