@@ -28,6 +28,14 @@ const (
 	SponsoredTypeNone      SponsoredType = "" // For null or no match
 )
 
+func (c Conference) IsSponsoredTop() bool {
+	return c.SponsoredType == SponsoredTypeCardTop
+}
+
+func (c Conference) IsPromoted() bool {
+	return c.PromoCode != ""
+}
+
 func ParseSponsoredType(value string) SponsoredType {
 	switch value {
 	case string(SponsoredTypeCardFrame):

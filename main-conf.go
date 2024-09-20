@@ -86,14 +86,24 @@ func FetchConferences(ctx context.Context, firestoreClient *firestore.Client) ([
 	}
 
 	sort.SliceStable(conferences, func(i, j int) bool {
-		// Prioritize "card_top" SponsoredType
-		if conferences[i].SponsoredType == SponsoredTypeCardTop && conferences[j].SponsoredType != SponsoredTypeCardTop {
+		// First, prioritize conferences that are both sponsored and promoted
+		if conferences[i].IsSponsoredTop() && conferences[i].IsPromoted() {
+			if !conferences[j].IsSponsoredTop() || !conferences[j].IsPromoted() {
+				return true
+			}
+		}
+
+		// Second, prioritize only sponsored (SponsoredType == "card_top")
+		if conferences[i].IsSponsoredTop() && !conferences[j].IsSponsoredTop() {
 			return true
 		}
-		// After, prioritize cards with PromoCode
-		if conferences[i].PromoCode != "" && conferences[j].SponsoredType == SponsoredTypeNone {
+
+		// Third, prioritize only promoted (PromoCode != "" but not sponsored)
+		if conferences[i].IsPromoted() && !conferences[j].IsPromoted() {
 			return true
 		}
+
+		// Default is false, maintain original order for items that don't meet the above conditions
 		return false
 	})
 
