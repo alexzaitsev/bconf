@@ -90,6 +90,10 @@ func FetchConferences(ctx context.Context, firestoreClient *firestore.Client) ([
 		if conferences[i].SponsoredType == SponsoredTypeCardTop && conferences[j].SponsoredType != SponsoredTypeCardTop {
 			return true
 		}
+		// After, prioritize cards with PromoCode
+		if conferences[i].PromoCode != "" && conferences[j].SponsoredType == SponsoredTypeNone {
+			return true
+		}
 		return false
 	})
 

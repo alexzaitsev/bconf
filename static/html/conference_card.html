@@ -15,6 +15,7 @@
                                 style="position: relative; top: -4px;"></span>
                         </div>
                         <div class="d-flex flex-column align-items-end mt-auto">
+                            <span id="conference-promoted" class="text-color-primary text-extra-small-2">Promo code</span>
                             <span id="conference-sponsored" class="text-color-secondary text-extra-small-2">Sponsored</span>
                         </div>
                     </div>
@@ -23,9 +24,9 @@
 
             <div class="card-back">
                 <div class="card-back-overlay"></div>
-                <div class="card-content d-flex flex-column justify-content-between p-3">
-                    <div class="add-to-calendar">
-                        <p class="text-small">Add to calendar</p>
+                <div class="card-content d-flex flex-column justify-content-between">
+                    <div class="d-flex flex-column add-to-calendar m-2">
+                        <span class="text-small mb-2">Add to calendar</span>
                         <div class="calendar-buttons d-flex justify-content-center gap-4">
                             <a id="conference-calendar-google" href="" class="btn btn-sm btn-outline-light"
                                 target="_blank">
@@ -37,10 +38,11 @@
                             </a>
                         </div>
                     </div>
-                    <div>
-                        <a id="conference-url" href="" class="conference-cta btn btn-outline-light" target="_blank">
+                    <div class="d-flex flex-column justify-content-center">
+                        <a id="conference-url" href="" class="conference-cta btn btn-outline-light mt-1 mx-2" target="_blank">
                             <i class="fas fa-link"></i> Website
                         </a>
+                        <span id="conference-promo-code" class="text-extra-small pt-1 ps-2 pe-2 pb-2"></span>
                     </div>
                 </div>
             </div>
