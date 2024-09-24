@@ -81,28 +81,7 @@ func FetchConferences(ctx context.Context, firestoreClient *firestore.Client) ([
 		conferences = append(conferences, conf)
 	}
 
-	sort.SliceStable(conferences, func(i, j int) bool {
-		// First, prioritize conferences that are both sponsored and promoted
-		if conferences[i].IsSponsoredTop() && conferences[i].IsPromoted() {
-			if !conferences[j].IsSponsoredTop() || !conferences[j].IsPromoted() {
-				return true
-			}
-		}
-
-		// Second, prioritize only sponsored (SponsoredType == "card_top")
-		if conferences[i].IsSponsoredTop() && !conferences[j].IsSponsoredTop() {
-			return true
-		}
-
-		// Third, prioritize only promoted (PromoCode != "" but not sponsored)
-		if conferences[i].IsPromoted() && !conferences[j].IsPromoted() {
-			return true
-		}
-
-		// Default is false, maintain original order for items that don't meet the above conditions
-		return false
-	})
-
+	sortConferences(conferences)
 	return conferences, nil
 }
 
@@ -130,4 +109,43 @@ func parseSponsored(doc *firestore.DocumentSnapshot, conf Conference) SponsoredT
 	} else {
 		return SponsoredTypeNone // Default if no sponsored_type value found
 	}
+}
+
+func sortConferences(conferences []Conference) {
+	sort.SliceStable(conferences, func(i, j int) bool {
+		// Calculate priority for conference i
+		iSponsored := conferences[i].IsSponsoredTop()
+		iPromoted := conferences[i].IsPromoted()
+
+		// Calculate priority for conference j
+		jSponsored := conferences[j].IsSponsoredTop()
+		jPromoted := conferences[j].IsPromoted()
+
+		// First, prioritize both sponsored and promoted (highest priority)
+		if iSponsored && iPromoted && !(jSponsored && jPromoted) {
+			return true
+		}
+		if !(iSponsored && iPromoted) && jSponsored && jPromoted {
+			return false
+		}
+
+		// Second, prioritize only sponsored
+		if iSponsored && !iPromoted && !(jSponsored && !jPromoted) {
+			return true
+		}
+		if !(iSponsored && !iPromoted) && jSponsored && !jPromoted {
+			return false
+		}
+
+		// Third, prioritize only promoted
+		if iPromoted && !iSponsored && !(jPromoted && !jSponsored) {
+			return true
+		}
+		if !(iPromoted && !iSponsored) && jPromoted && !jSponsored {
+			return false
+		}
+
+		// Default: maintain original order (return false)
+		return false
+	})
 }
