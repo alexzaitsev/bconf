@@ -41,6 +41,10 @@ a:hover {
     color: var(--color-dark-bg);
 }
 
+.text-color-attention {
+    color: var(--color-dark-attention);
+}
+
 .divider {
     height: 1px;
     background-color: var(--color-dark-border);
