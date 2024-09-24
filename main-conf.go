@@ -78,10 +78,6 @@ func FetchConferences(ctx context.Context, firestoreClient *firestore.Client) ([
 
 		conf.SponsoredType = parseSponsored(doc, conf)
 
-		// if conf.PictureUrl == "" {
-		// 	conf.PictureUrl = "https://t4.ftcdn.net/jpg/02/83/83/93/360_F_283839302_yt6JIsE96Pj4PydFDcBNKDUnuSpYB9h0.jpg"
-		// }
-
 		conferences = append(conferences, conf)
 	}
 
