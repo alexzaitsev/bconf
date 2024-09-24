@@ -1,39 +1,49 @@
-$('#link-subscribe').click(function(){
-    gtag('event', 'subscribe');
+const ANALYTICS_PREFIX_CLICK = 'v2_click';
+
+$('.analytics-top-subscribe').click(function(){
+    gtag('event', `${ANALYTICS_PREFIX_CLICK}_top_subscribe`);
 });
 
-$('#link-submit-banner').click(function(){
-    gtag('event', 'submit_conference_banner');
+$('.analytics-banner-submit').click(function(){
+    gtag('event', `${ANALYTICS_PREFIX_CLICK}_banner_submit`);
 });
 
-$('.link-conference').click(function(){
-    gtag('event', 'table_conference_url_click');
+$('.card-front').click(function(){
+    gtag('event', `${ANALYTICS_PREFIX_CLICK}_card_front`);
 });
 
-$('.link-conference-calendar-google').click(function(){
-    gtag('event', 'table_conference_calendar_google_click');
+$('.card-back').click(function(){
+    gtag('event', `${ANALYTICS_PREFIX_CLICK}_card_back`);
 });
 
-$('.link-conference-calendar-apple').click(function(){
-    gtag('event', 'table_conference_calendar_apple_click');
+$('.analytics-card-cta').click(function(){
+    gtag('event', `${ANALYTICS_PREFIX_CLICK}_card_website`);
 });
 
-$('#subscription').click(function(){
-    gtag('event', 'iframe_subscribe');
+$('.analytics-card-google-cal').click(function(){
+    gtag('event', `${ANALYTICS_PREFIX_CLICK}_card_google_cal`);
 });
 
-$('#link-sponsor').click(function(){
-    gtag('event', 'mailto_sponsor');
+$('.analytics-card-apple-cal').click(function(){
+    gtag('event', `${ANALYTICS_PREFIX_CLICK}_card_apple_cal`);
 });
 
-$('#link-contact').click(function(){
-    gtag('event', 'mailto_contact');
+$('.analytics-iframe-subscription').click(function(){
+    gtag('event', `${ANALYTICS_PREFIX_CLICK}_iframe_subscribe`);
 });
 
-$('#link-submit-bottom').click(function(){
-    gtag('event', 'submit_conference_bottom');
+$('.analytics-footer-sponsor').click(function(){
+    gtag('event', `${ANALYTICS_PREFIX_CLICK}_footer_sponsor`);
 });
 
-$('#link-github').click(function(){
-    gtag('event', 'github');
+$('.analytics-footer-contact-us').click(function(){
+    gtag('event', `${ANALYTICS_PREFIX_CLICK}_footer_contact_us`);
+});
+
+$('.analytics-footer-submit').click(function(){
+    gtag('event', `${ANALYTICS_PREFIX_CLICK}_footer_submit`);
+});
+
+$('.analytics-github').click(function(){
+    gtag('event', `${ANALYTICS_PREFIX_CLICK}_github`);
 });

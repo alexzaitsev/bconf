@@ -54,10 +54,10 @@ d3.json("https://piwodlaiwo.github.io/topojson//world-continents.json", function
                 // Select the clicked continent if it was not selected (allowing deselect functionality)
                 selectedContinent = d.properties.continent
                 d3.select(this).style("fill", selectedColor);
-                gtag('event', 'map_continent_select', { 'continent': selectedContinent });
+                gtag('event', `${ANALYTICS_PREFIX_CLICK}_map_continent_select`, { 'continent': selectedContinent });
             } else {
                 // deselect
-                gtag('event', 'map_continent_deselect', { 'continent': selectedContinent });
+                gtag('event', `${ANALYTICS_PREFIX_CLICK}_map_continent_deselect`, { 'continent': selectedContinent });
                 selectedContinent = null
             }
             update()
