@@ -1,6 +1,7 @@
 ### Versions
 | Tag    | Changes |
 | ------ | ------- |
+| [v2.0.3](https://github.com/alexzaitsev/bconf/releases/tag/v2.0.3) | new images, changed submit way |
 | [v2.0.2](https://github.com/alexzaitsev/bconf/releases/tag/v2.0.2) | new social image |
 | [v2.0.1](https://github.com/alexzaitsev/bconf/releases/tag/v2.0.1) | new analytics for cards design |
 | [v2.0.0](https://github.com/alexzaitsev/bconf/releases/tag/v2.0.0) | new cards design, promoted and sponsored cards |

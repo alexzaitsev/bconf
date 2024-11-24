@@ -68,10 +68,6 @@ func main() {
 		homeHandler(c, firestore)
 	})
 
-	router.GET("/submit", func(c *gin.Context) {
-		c.Redirect(http.StatusPermanentRedirect, "https://forms.gle/HpCJmAjSQVnU2p1M6")
-	})
-
 	router.Run(":8080")
 }
 
